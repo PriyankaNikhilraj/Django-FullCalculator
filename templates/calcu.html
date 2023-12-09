@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Calculator</title>
+    {% load static %}
+
+
+  </head>
+  <body class="bg-light">
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">mycalculator</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#instructions">Instructions</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6" style="margin:0 auto;">
+        {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>ERROR........</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{ans}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" style="margin:1rem auto 0 auto;">
+        <img src="{% static 'calculator.jpg' %}" class="imd-fluid" style="height:350px; width:545px;">
+        <div class="card">
+          <div class="card-body">
+            <form method="get" action="{% url 'query' %}">
+              <div class="form-group">
+                <input type="search" class="form-control" name="query" id="query">
+              </div>
+              <div class="row mt-5">
+                <div class="col-md-6">
+                  <input type="submit" class="btn btn-success" style="display: block; margin: 0 auto:">
+                </div>
+                <div class="col-md-6">
+                   <input type="reset" class="btn btn-danger" style="display: block; margin: 0 auto:">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" style="margin: 2rem auto 0 auto;">
+        <p class="display-4" id="about" name="about" style="text-align:center;">About</p>
+        <hr>
+        <p class="lead">Our Calculator app can perform mathematical Operation</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6" style="margin: 2rem auto 0 auto;">
+        <p class="display-4" id="instructions" name="instructions" style="text-align:center;">Instructions</p>
+        <hr>
+        <ul class="list-group">
+          <li class="list-group-item">+   - ADDITION</li>
+          <li class="list-group-item">-   - SUBTRACTION</li>
+          <li class="list-group-item">*   - MULTIPLICATION</li>
+          <li class="list-group-item">/   - DIVISION</li>
+          <li class="list-group-item">//  - FLOOR DIVISION</li>
+          <li class="list-group-item">()  - PARENTHESES</li>
+          <li class="list-group-item">**  - EXPONENTIAL</li>
+          <li class="list-group-item">%  - MODULUS</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
